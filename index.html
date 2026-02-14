@@ -3,22 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tischlerei Stengel | Meisterbetrieb in Marburg</title>
-    <meta name="description" content="Tischlerei Stengel in Marburg - Ihr Meisterbetrieb für individuelle Möbel, Innenausbau und Holzarbeiten. Qualität aus Tradition seit Generationen.">
+    <title>Tischlerei Stengel | Meisterbetrieb Marburg</title>
+    <meta name="description" content="Tischlerei Stengel in Marburg - Meisterbetrieb für individuelle Möbel und Innenausbau. Handwerk mit Seele.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --color-wood-dark: #5D4E37;
-            --color-wood-medium: #8B7355;
-            --color-wood-light: #C4A77D;
-            --color-cream: #FAF8F5;
-            --color-warm-white: #FFFEF9;
-            --color-text: #3D3D3D;
-            --color-text-light: #6B6B6B;
-            --font-heading: 'Cormorant Garamond', Georgia, serif;
-            --font-body: 'Source Sans Pro', -apple-system, sans-serif;
+            --oak: #2C1810;
+            --walnut: #4A3728;
+            --honey: #C9A66B;
+            --cream: #F7F3ED;
+            --sand: #E8E0D5;
+            --moss: #4A5D52;
+            --gold: #B8956E;
+            --shadow: rgba(44, 24, 16, 0.08);
         }
 
         * {
@@ -32,11 +31,23 @@
         }
 
         body {
-            font-family: var(--font-body);
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--oak);
             font-size: 17px;
             line-height: 1.7;
-            color: var(--color-text);
-            background: var(--color-warm-white);
+            overflow-x: hidden;
+        }
+
+        /* Grain Overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1000;
         }
 
         /* Navigation */
@@ -46,761 +57,761 @@
             left: 0;
             right: 0;
             z-index: 100;
-            padding: 1.5rem 5%;
+            padding: 1.8rem 6%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.3s ease;
+            mix-blend-mode: difference;
         }
 
         nav.scrolled {
-            background: rgba(255, 254, 249, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
-            padding: 1rem 5%;
+            mix-blend-mode: normal;
+            background: rgba(247, 243, 237, 0.92);
+            backdrop-filter: blur(20px);
+            padding: 1.2rem 6%;
+            box-shadow: 0 4px 30px var(--shadow);
         }
 
         .logo {
-            font-family: var(--font-heading);
-            font-size: 1.6rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
             font-weight: 500;
-            color: var(--color-wood-dark);
+            color: var(--cream);
             text-decoration: none;
             letter-spacing: 0.02em;
+            transition: color 0.3s;
+        }
+
+        nav.scrolled .logo {
+            color: var(--oak);
         }
 
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 3rem;
             list-style: none;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--color-text);
-            font-size: 0.95rem;
+            color: var(--cream);
+            font-size: 0.9rem;
             font-weight: 400;
-            letter-spacing: 0.03em;
-            transition: color 0.2s;
-            position: relative;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: opacity 0.3s;
+        }
+
+        nav.scrolled .nav-links a {
+            color: var(--walnut);
         }
 
         .nav-links a:hover {
-            color: var(--color-wood-medium);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--color-wood-light);
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-cta {
-            background: var(--color-wood-dark);
-            color: white !important;
-            padding: 0.7rem 1.5rem;
-            border-radius: 2px;
-        }
-
-        .nav-cta::after {
-            display: none;
-        }
-
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 10px;
-        }
-
-        .mobile-menu span {
-            width: 25px;
-            height: 2px;
-            background: var(--color-wood-dark);
-            transition: 0.3s;
+            opacity: 0.6;
         }
 
         /* Hero */
         .hero {
             height: 100vh;
-            min-height: 700px;
+            min-height: 800px;
             position: relative;
             display: flex;
-            align-items: center;
+            align-items: flex-end;
+            padding: 8% 6%;
             overflow: hidden;
         }
 
         .hero-bg {
             position: absolute;
             inset: 0;
-            background: url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=1920&q=80') center/cover;
+            background: url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=1920&q=85') center/cover;
+            transform: scale(1.05);
+            animation: heroZoom 20s ease-out forwards;
+        }
+
+        @keyframes heroZoom {
+            to { transform: scale(1); }
         }
 
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(93, 78, 55, 0.7) 0%, rgba(139, 115, 85, 0.4) 100%);
+            background: linear-gradient(
+                to top,
+                rgba(44, 24, 16, 0.85) 0%,
+                rgba(44, 24, 16, 0.4) 40%,
+                rgba(44, 24, 16, 0.2) 100%
+            );
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
-            padding: 0 10%;
             max-width: 800px;
         }
 
-        .hero h1 {
-            font-family: var(--font-heading);
-            font-size: clamp(2.8rem, 6vw, 4.5rem);
-            font-weight: 400;
-            color: white;
-            line-height: 1.15;
+        .hero-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--honey);
             margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 1s 0.3s forwards;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 400;
+            color: var(--cream);
+            line-height: 1.05;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeUp 1s 0.5s forwards;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--honey);
+        }
+
+        .hero-line {
+            width: 80px;
+            height: 1px;
+            background: var(--honey);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: expandLine 1s 0.7s forwards;
+        }
+
+        @keyframes expandLine {
+            from { width: 0; opacity: 0; }
+            to { width: 80px; opacity: 1; }
         }
 
         .hero p {
-            font-size: 1.2rem;
-            color: rgba(255,255,255,0.9);
-            font-weight: 300;
-            margin-bottom: 2.5rem;
-            max-width: 500px;
+            font-size: 1.15rem;
+            color: rgba(247, 243, 237, 0.85);
+            max-width: 480px;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeUp 1s 0.9s forwards;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: var(--color-warm-white);
-            color: var(--color-wood-dark);
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 2.5rem;
+            background: var(--honey);
+            color: var(--oak);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            font-weight: 500;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            animation: fadeUp 1s 1.1s forwards;
         }
 
         .btn:hover {
-            background: var(--color-wood-light);
-            color: white;
-            transform: translateY(-2px);
+            background: var(--cream);
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
 
-        .btn-outline {
-            background: transparent;
-            border: 1px solid white;
-            color: white;
-            margin-left: 1rem;
+        .btn svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s;
         }
 
-        .btn-outline:hover {
-            background: white;
-            color: var(--color-wood-dark);
+        .btn:hover svg {
+            transform: translateX(5px);
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 4rem;
+            right: 6%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            color: var(--cream);
+            opacity: 0;
+            animation: fadeUp 1s 1.5s forwards;
+        }
+
+        .scroll-indicator span {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            writing-mode: vertical-rl;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--honey), transparent);
+            animation: scrollPulse 2s infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 1; transform: scaleY(1); }
+            50% { opacity: 0.5; transform: scaleY(0.8); }
         }
 
         /* Sections */
         section {
-            padding: 8rem 10%;
+            padding: 10rem 6%;
         }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
+        .section-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8rem;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .section-label {
-            font-size: 0.85rem;
-            letter-spacing: 0.2em;
+            font-size: 0.75rem;
+            letter-spacing: 0.25em;
             text-transform: uppercase;
-            color: var(--color-wood-medium);
-            margin-bottom: 1rem;
-            display: block;
+            color: var(--moss);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--moss);
         }
 
         h2 {
-            font-family: var(--font-heading);
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
             font-weight: 400;
-            color: var(--color-wood-dark);
+            line-height: 1.2;
+            margin-bottom: 2rem;
         }
 
-        /* Über uns */
-        .about {
-            background: var(--color-cream);
+        h2 em {
+            font-style: italic;
+            color: var(--walnut);
         }
 
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
+        .text-content p {
+            color: var(--walnut);
+            margin-bottom: 1.5rem;
         }
 
-        .about-image {
+        /* Image Frames */
+        .image-frame {
             position: relative;
         }
 
-        .about-image img {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-        }
-
-        .about-image::before {
+        .image-frame::before {
             content: '';
             position: absolute;
             top: -20px;
             left: -20px;
             right: 20px;
             bottom: 20px;
-            border: 1px solid var(--color-wood-light);
+            border: 1px solid var(--honey);
             z-index: -1;
+            transition: transform 0.5s;
         }
 
-        .about-content h2 {
-            margin-bottom: 1.5rem;
+        .image-frame:hover::before {
+            transform: translate(-5px, -5px);
         }
 
-        .about-content p {
-            color: var(--color-text-light);
-            margin-bottom: 1.5rem;
+        .image-frame img {
+            width: 100%;
+            height: 550px;
+            object-fit: cover;
+            filter: grayscale(20%);
+            transition: filter 0.5s;
         }
 
-        .values {
+        .image-frame:hover img {
+            filter: grayscale(0%);
+        }
+
+        /* Stats */
+        .stats {
             display: flex;
-            gap: 2rem;
-            margin-top: 2rem;
+            gap: 4rem;
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--sand);
         }
 
-        .value {
-            text-align: center;
+        .stat {
+            text-align: left;
         }
 
-        .value-number {
-            font-family: var(--font-heading);
-            font-size: 2.5rem;
-            color: var(--color-wood-dark);
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--oak);
+            line-height: 1;
         }
 
-        .value-label {
-            font-size: 0.85rem;
-            color: var(--color-text-light);
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--walnut);
             text-transform: uppercase;
             letter-spacing: 0.1em;
+            margin-top: 0.5rem;
         }
 
-        /* Leistungen */
+        /* Services */
+        .services {
+            background: var(--oak);
+            color: var(--cream);
+        }
+
+        .services h2 {
+            color: var(--cream);
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .services h2 em {
+            color: var(--honey);
+        }
+
+        .services .section-label {
+            color: var(--honey);
+            justify-content: center;
+        }
+
+        .services .section-label::before {
+            background: var(--honey);
+        }
+
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            gap: 1px;
+            background: rgba(255,255,255,0.1);
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .service-card {
-            background: var(--color-cream);
-            padding: 2.5rem;
-            transition: transform 0.3s, box-shadow 0.3s;
+            background: var(--oak);
+            padding: 3rem;
+            transition: background 0.4s;
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            background: var(--walnut);
+        }
+
+        .service-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--honey);
+            opacity: 0.4;
+            margin-bottom: 2rem;
         }
 
         .service-card h3 {
-            font-family: var(--font-heading);
+            font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
-            color: var(--color-wood-dark);
+            font-weight: 400;
             margin-bottom: 1rem;
         }
 
         .service-card p {
-            color: var(--color-text-light);
             font-size: 0.95rem;
+            color: rgba(247, 243, 237, 0.7);
+            line-height: 1.7;
         }
 
-        /* Bildergalerie */
+        /* Gallery */
         .gallery {
-            background: var(--color-wood-dark);
-            padding: 6rem 0;
+            background: var(--sand);
+            padding: 10rem 0;
         }
 
-        .gallery .section-header {
-            padding: 0 10%;
+        .gallery-header {
+            text-align: center;
+            padding: 0 6%;
+            margin-bottom: 5rem;
         }
 
-        .gallery h2, .gallery .section-label {
-            color: var(--color-cream);
+        .gallery-scroll {
+            display: flex;
+            gap: 2rem;
+            padding: 0 6%;
+            overflow-x: auto;
+            scrollbar-width: none;
+            cursor: grab;
         }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 4px;
+        .gallery-scroll::-webkit-scrollbar {
+            display: none;
         }
 
         .gallery-item {
-            aspect-ratio: 1;
+            flex: 0 0 auto;
+            width: 400px;
+            position: relative;
             overflow: hidden;
         }
 
         .gallery-item img {
             width: 100%;
-            height: 100%;
+            height: 500px;
             object-fit: cover;
-            transition: transform 0.5s;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .gallery-item:hover img {
-            transform: scale(1.08);
+            transform: scale(1.05);
         }
 
-        /* Philosophie */
-        .philosophy {
-            position: relative;
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
-            background: url('https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=1920&q=80') center/cover fixed;
-        }
-
-        .philosophy::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(255,254,249,0.92);
-        }
-
-        .philosophy-content {
-            position: relative;
-            max-width: 700px;
-            margin: 0 auto;
+        /* Quote */
+        .quote {
+            padding: 12rem 6%;
             text-align: center;
-            padding: 4rem;
+            position: relative;
+            background: var(--cream);
         }
 
-        .philosophy blockquote {
-            font-family: var(--font-heading);
-            font-size: clamp(1.5rem, 3vw, 2.2rem);
+        .quote::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 20rem;
+            color: var(--sand);
+            position: absolute;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            line-height: 1;
+            z-index: 0;
+        }
+
+        .quote blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 400;
             font-style: italic;
-            color: var(--color-wood-dark);
-            line-height: 1.6;
-            margin-bottom: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            color: var(--oak);
         }
 
-        .philosophy cite {
+        .quote cite {
+            display: block;
+            margin-top: 2rem;
+            font-family: 'DM Sans', sans-serif;
             font-style: normal;
-            color: var(--color-text-light);
-            font-size: 0.95rem;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--walnut);
         }
 
-        /* Kontakt */
+        /* Contact */
         .contact {
-            background: var(--color-cream);
+            background: var(--walnut);
+            color: var(--cream);
         }
 
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 5rem;
+            gap: 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .contact-info h3 {
-            font-family: var(--font-heading);
-            font-size: 2rem;
-            color: var(--color-wood-dark);
-            margin-bottom: 1.5rem;
+        .contact h2 {
+            color: var(--cream);
         }
 
-        .contact-info p {
-            color: var(--color-text-light);
-            margin-bottom: 2rem;
+        .contact h2 em {
+            color: var(--honey);
         }
 
-        .contact-details {
-            margin-bottom: 2rem;
+        .contact .section-label {
+            color: var(--honey);
+        }
+
+        .contact .section-label::before {
+            background: var(--honey);
+        }
+
+        .contact-info {
+            margin-top: 3rem;
         }
 
         .contact-item {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            align-items: flex-start;
+            gap: 2rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
         .contact-item strong {
             min-width: 100px;
-            color: var(--color-wood-medium);
-            font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            color: var(--honey);
+            font-weight: 500;
         }
 
-        .contact-item span {
-            color: var(--color-text);
+        .contact-item span,
+        .contact-item a {
+            color: rgba(247, 243, 237, 0.85);
         }
 
         .contact-item a {
-            color: var(--color-wood-dark);
             text-decoration: none;
+            transition: color 0.3s;
         }
 
         .contact-item a:hover {
-            text-decoration: underline;
-        }
-
-        .contact-image {
-            position: relative;
+            color: var(--honey);
         }
 
         .contact-image img {
             width: 100%;
-            height: 450px;
+            height: 100%;
+            min-height: 500px;
             object-fit: cover;
+            filter: grayscale(30%);
         }
 
         /* Footer */
         footer {
-            background: var(--color-wood-dark);
-            color: var(--color-cream);
-            padding: 4rem 10% 2rem;
+            background: var(--oak);
+            color: var(--cream);
+            padding: 4rem 6%;
         }
 
-        .footer-top {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 4rem;
-            margin-bottom: 3rem;
-            padding-bottom: 3rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .footer-brand .logo {
-            color: var(--color-cream);
-            margin-bottom: 1rem;
-            display: inline-block;
-        }
-
-        .footer-brand p {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.95rem;
-        }
-
-        .footer-links h4 {
-            font-family: var(--font-heading);
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.2s;
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
-        .footer-bottom {
+        .footer-content {
             display: flex;
             justify-content: space-between;
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.5);
-        }
-
-        .footer-legal a {
-            color: rgba(255,255,255,0.5);
-            text-decoration: none;
-            margin-left: 2rem;
-        }
-
-        .footer-legal a:hover {
-            color: white;
-        }
-
-        /* Impressum & Datenschutz */
-        .legal-page {
-            padding-top: 120px;
-            min-height: 100vh;
-        }
-
-        .legal-content {
-            max-width: 800px;
+            align-items: center;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
-        .legal-content h1 {
-            font-family: var(--font-heading);
-            font-size: 2.5rem;
-            color: var(--color-wood-dark);
-            margin-bottom: 2rem;
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
         }
 
-        .legal-content h2 {
-            font-size: 1.3rem;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
+        .footer-links {
+            display: flex;
+            gap: 3rem;
         }
 
-        .legal-content p, .legal-content li {
-            color: var(--color-text-light);
-            margin-bottom: 1rem;
+        .footer-links a {
+            color: rgba(247, 243, 237, 0.6);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
         }
 
-        .legal-content ul {
-            margin-left: 1.5rem;
-            margin-bottom: 1.5rem;
+        .footer-links a:hover {
+            color: var(--honey);
         }
 
-        /* Responsive */
+        .footer-copy {
+            font-size: 0.8rem;
+            color: rgba(247, 243, 237, 0.4);
+        }
+
+        /* Mobile */
         @media (max-width: 1024px) {
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .section-grid {
+                grid-template-columns: 1fr;
+                gap: 4rem;
             }
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-item {
+                width: 320px;
             }
         }
 
         @media (max-width: 768px) {
-            section {
-                padding: 5rem 6%;
-            }
-
-            .nav-links {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: var(--color-warm-white);
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 2rem;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .mobile-menu {
-                display: flex;
-                z-index: 101;
-            }
-
-            .about-grid, .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .about-image {
-                order: -1;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-top {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-
-            .footer-legal a {
-                margin: 0 1rem;
-            }
-
-            .btn-outline {
-                margin-left: 0;
-                margin-top: 1rem;
-                display: block;
-                text-align: center;
-            }
+            nav { padding: 1.2rem 5%; }
+            .nav-links { display: none; }
+            section { padding: 6rem 5%; }
+            .hero { padding: 6rem 5%; min-height: 100vh; }
+            .hero h1 { font-size: 2.5rem; }
+            .stats { flex-direction: column; gap: 2rem; }
+            .footer-content { flex-direction: column; gap: 2rem; text-align: center; }
+            .footer-links { flex-wrap: wrap; justify-content: center; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav id="navbar">
-        <a href="#" class="logo">Tischlerei Stengel</a>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#geschichte">Geschichte</a></li>
+        <a href="#" class="logo">Stengel</a>
+        <ul class="nav-links">
+            <li><a href="#philosophie">Philosophie</a></li>
             <li><a href="#leistungen">Leistungen</a></li>
-            <li><a href="#galerie">Arbeiten</a></li>
-            <li><a href="#kontakt" class="nav-cta">Kontakt</a></li>
+            <li><a href="#arbeiten">Arbeiten</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
         </ul>
-        <div class="mobile-menu" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
     </nav>
 
-    <!-- Hero -->
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Handwerk mit Herz und Tradition</h1>
-            <p>Seit Generationen fertigen wir individuelle Möbel und Einbauten mit Liebe zum Detail. Jedes Stück erzählt eine Geschichte.</p>
-            <a href="#kontakt" class="btn">Projekt anfragen</a>
-            <a href="#leistungen" class="btn btn-outline">Unsere Leistungen</a>
+            <p class="hero-label">Meisterbetrieb seit Generationen</p>
+            <h1>Holz ist <em>Natur.</em><br>Handwerk ist <em>Seele.</em></h1>
+            <div class="hero-line"></div>
+            <p>Wir fertigen Möbel und Einbauten, die Geschichten erzählen. Mit Respekt vor dem Material und Liebe zum Detail.</p>
+            <a href="#kontakt" class="btn">
+                Projekt besprechen
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scrollen</span>
+            <div class="scroll-line"></div>
         </div>
     </section>
 
-    <!-- Über uns -->
-    <section class="about" id="geschichte">
-        <div class="about-grid">
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1588854337115-1c67d9247e4d?w=800&q=80" alt="Tischlermeister bei der Arbeit">
-            </div>
-            <div class="about-content">
-                <span class="section-label">Über uns</span>
-                <h2>Meisterliches Handwerk aus Marburg</h2>
-                <p>Als inhabergeführter Meisterbetrieb verbinden wir traditionelle Handwerkskunst mit modernen Techniken. In unserer Werkstatt in der Leopold-Lucas-Straße entstehen Möbel und Einbauten, die Generationen überdauern.</p>
-                <p>Wir glauben daran, dass gutes Handwerk Zeit braucht. Deshalb nehmen wir uns diese Zeit - für präzise Arbeit, hochwertige Materialien und persönliche Beratung.</p>
-                <div class="values">
-                    <div class="value">
-                        <div class="value-number">40+</div>
-                        <div class="value-label">Jahre Erfahrung</div>
+    <section id="philosophie">
+        <div class="section-grid">
+            <div class="text-content">
+                <p class="section-label">Unsere Philosophie</p>
+                <h2>Wo <em>Tradition</em> auf Präzision trifft</h2>
+                <p>In unserer Werkstatt in der Leopold-Lucas-Straße verbinden wir das Wissen vergangener Generationen mit den Möglichkeiten moderner Technik. Jedes Möbelstück entsteht aus dem Dialog zwischen Mensch und Material.</p>
+                <p>Wir glauben: Gutes Handwerk braucht Zeit. Zeit zum Verstehen, zum Planen, zum Erschaffen. Das Ergebnis sind Stücke, die nicht nur funktionieren, sondern berühren.</p>
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-number">40+</div>
+                        <div class="stat-label">Jahre Erfahrung</div>
                     </div>
-                    <div class="value">
-                        <div class="value-number">100%</div>
-                        <div class="value-label">Maßanfertigung</div>
-                    </div>
-                    <div class="value">
-                        <div class="value-number">Meister</div>
-                        <div class="value-label">Qualität</div>
+                    <div class="stat">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Maßanfertigung</div>
                     </div>
                 </div>
             </div>
+            <div class="image-frame">
+                <img src="https://images.unsplash.com/photo-1588854337115-1c67d9247e4d?w=800&q=80" alt="Tischlermeister bei der Arbeit">
+            </div>
         </div>
     </section>
 
-    <!-- Leistungen -->
-    <section id="leistungen">
-        <div class="section-header">
-            <span class="section-label">Leistungen</span>
-            <h2>Was wir für Sie tun</h2>
-        </div>
+    <section class="services" id="leistungen">
+        <p class="section-label">Leistungen</p>
+        <h2>Was wir für Sie <em>erschaffen</em></h2>
         <div class="services-grid">
             <div class="service-card">
+                <div class="service-number">01</div>
                 <h3>Möbel nach Maß</h3>
-                <p>Individuelle Möbelstücke, perfekt auf Ihre Räume und Wünsche abgestimmt. Vom Entwurf bis zur Montage aus einer Hand.</p>
+                <p>Individuelle Möbelstücke, die perfekt in Ihr Leben passen. Vom ersten Entwurf bis zur finalen Montage.</p>
             </div>
             <div class="service-card">
+                <div class="service-number">02</div>
                 <h3>Innenausbau</h3>
-                <p>Komplette Raumgestaltung mit Einbauschränken, Wandverkleidungen und Deckenarbeiten. Wir schaffen Lebensräume.</p>
+                <p>Komplette Raumkonzepte mit Einbauschränken, Wandverkleidungen und Deckengestaltung.</p>
             </div>
             <div class="service-card">
+                <div class="service-number">03</div>
                 <h3>Küchen</h3>
-                <p>Maßgefertigte Küchen, die funktional und ästhetisch überzeugen. Jedes Detail wird auf Ihre Bedürfnisse angepasst.</p>
+                <p>Maßgefertigte Küchen, die Funktionalität und Ästhetik in perfekter Balance vereinen.</p>
             </div>
             <div class="service-card">
+                <div class="service-number">04</div>
                 <h3>Türen & Fenster</h3>
-                <p>Haustüren, Innentüren und Fenster in handwerklicher Qualität. Wärmedämmung und Sicherheit inklusive.</p>
+                <p>Haustüren und Innentüren in handwerklicher Perfektion. Wärmedämmung und Sicherheit inklusive.</p>
             </div>
             <div class="service-card">
+                <div class="service-number">05</div>
                 <h3>Treppen</h3>
-                <p>Vom klassischen Holztreppe bis zur modernen Designtreppe - wir verbinden Funktion und Form perfekt.</p>
+                <p>Von klassisch bis modern - Treppen, die Räume verbinden und Blicke fangen.</p>
             </div>
             <div class="service-card">
+                <div class="service-number">06</div>
                 <h3>Restaurierung</h3>
-                <p>Antike Möbel und historische Einbauten verdienen fachgerechte Pflege. Wir bewahren ihren Wert und ihre Geschichte.</p>
+                <p>Antike Schätze verdienen Respekt. Wir bewahren Geschichte mit fachkundiger Hand.</p>
             </div>
         </div>
     </section>
 
-    <!-- Galerie -->
-    <section class="gallery" id="galerie">
-        <div class="section-header">
-            <span class="section-label">Referenzen</span>
-            <h2>Einblicke in unsere Arbeit</h2>
+    <section class="gallery" id="arbeiten">
+        <div class="gallery-header">
+            <p class="section-label">Referenzen</p>
+            <h2>Einblicke in unser <em>Schaffen</em></h2>
         </div>
-        <div class="gallery-grid">
+        <div class="gallery-scroll">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80" alt="Möbelstück">
+            </div>
             <div class="gallery-item">
                 <img src="https://images.unsplash.com/photo-1449247709967-d4461a6a6103?w=600&q=80" alt="Massivholztisch">
             </div>
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?w=600&q=80" alt="Holzregal Maßanfertigung">
+                <img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=600&q=80" alt="Holzarbeit">
             </div>
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=600&q=80" alt="Holz Hobeln">
+                <img src="https://images.unsplash.com/photo-1540932239986-30128078f3c5?w=600&q=80" alt="Holzmaserung">
             </div>
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80" alt="Handgefertigtes Möbelstück">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1556909114-44e3e70034e2?w=600&q=80" alt="Einbauküche Holz">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80" alt="Eiche Natur">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1540932239986-30128078f3c5?w=600&q=80" alt="Holzmaserung Detail">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1597072689227-8882273e8f6a?w=600&q=80" alt="Tischlerwerkzeug">
+                <img src="https://images.unsplash.com/photo-1556909114-44e3e70034e2?w=600&q=80" alt="Einbauküche">
             </div>
         </div>
     </section>
 
-    <!-- Philosophie -->
-    <section class="philosophy">
-        <div class="philosophy-content">
-            <blockquote>
-                "Der Baum, der gefällt wird, lebt in unseren Händen weiter. Wir geben ihm eine neue Geschichte."
-            </blockquote>
-            <cite>- Tischlerei Stengel, Marburg</cite>
-        </div>
+    <section class="quote">
+        <blockquote>
+            Der Baum, der gefällt wird, lebt in unseren Händen weiter. Wir geben ihm eine neue Geschichte.
+        </blockquote>
+        <cite>Tischlerei Stengel</cite>
     </section>
 
-    <!-- Kontakt -->
     <section class="contact" id="kontakt">
         <div class="contact-grid">
-            <div class="contact-info">
-                <span class="section-label">Kontakt</span>
-                <h3>Lassen Sie uns sprechen</h3>
-                <p>Sie haben ein Projekt im Kopf? Wir beraten Sie gerne - unverbindlich und persönlich. Besuchen Sie uns in unserer Werkstatt oder rufen Sie uns an.</p>
-                
-                <div class="contact-details">
+            <div>
+                <p class="section-label">Kontakt</p>
+                <h2>Lassen Sie uns <em>sprechen</em></h2>
+                <div class="contact-info">
                     <div class="contact-item">
                         <strong>Adresse</strong>
                         <span>Leopold-Lucas-Str. 23<br>35037 Marburg</span>
                     </div>
                     <div class="contact-item">
                         <strong>Telefon</strong>
-                        <span><a href="tel:+4964213316">+49 (0) 6421 / 3 31 63</a></span>
+                        <a href="tel:+4964213316">+49 (0) 6421 / 3 31 63</a>
                     </div>
                     <div class="contact-item">
                         <strong>Fax</strong>
@@ -808,7 +819,7 @@
                     </div>
                     <div class="contact-item">
                         <strong>E-Mail</strong>
-                        <span><a href="mailto:info@stengel-tischlerei.de">info@stengel-tischlerei.de</a></span>
+                        <a href="mailto:info@stengel-tischlerei.de">info@stengel-tischlerei.de</a>
                     </div>
                     <div class="contact-item">
                         <strong>Öffnungszeiten</strong>
@@ -817,72 +828,26 @@
                 </div>
             </div>
             <div class="contact-image">
-                <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=800&q=80" alt="Einzelner Baum in der Natur">
+                <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=800&q=80" alt="Baum in der Natur">
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
-        <div class="footer-top">
-            <div class="footer-brand">
-                <a href="#" class="logo">Tischlerei Stengel</a>
-                <p>Meisterbetrieb für individuelle Möbel und Innenausbau in Marburg. Qualität aus Tradition.</p>
-            </div>
+        <div class="footer-content">
+            <div class="footer-logo">Tischlerei Stengel</div>
             <div class="footer-links">
-                <h4>Navigation</h4>
-                <ul>
-                    <li><a href="#geschichte">Geschichte</a></li>
-                    <li><a href="#leistungen">Leistungen</a></li>
-                    <li><a href="#galerie">Referenzen</a></li>
-                    <li><a href="#kontakt">Kontakt</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>Kontakt</h4>
-                <ul>
-                    <li><a href="tel:+496421331613">+49 6421 331613</a></li>
-                    <li><a href="mailto:info@stengel-tischlerei.de">info@stengel-tischlerei.de</a></li>
-                    <li>Leopold-Lucas-Str. 23</li>
-                    <li>35037 Marburg</li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <span>&copy; 2026 Tischlerei Stengel. Alle Rechte vorbehalten.</span>
-            <div class="footer-legal">
                 <a href="impressum.html">Impressum</a>
                 <a href="datenschutz.html">Datenschutz</a>
             </div>
+            <div class="footer-copy">&copy; 2026</div>
         </div>
     </footer>
 
     <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Mobile menu
-        function toggleMenu() {
-            document.getElementById('navLinks').classList.toggle('active');
-        }
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    document.getElementById('navLinks').classList.remove('active');
-                }
-            });
+            navbar.classList.toggle('scrolled', window.scrollY > 100);
         });
     </script>
 </body>
