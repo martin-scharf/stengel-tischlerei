@@ -547,6 +547,137 @@
             line-height: 1.7;
         }
 
+        .service-item { cursor: pointer; }
+
+        .service-item::after {
+            content: 'Bilder ansehen →';
+            display: block;
+            margin-top: 1rem;
+            font-size: 0.75rem;
+            color: var(--amber);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s;
+        }
+
+        .service-item:hover::after {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Slider Modal */
+        .slider-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(26, 20, 16, 0.95);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .slider-modal.active { display: flex; }
+
+        .slider-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: none;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: var(--cream);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-close:hover {
+            background: var(--amber);
+            border-color: var(--amber);
+            color: var(--bark);
+        }
+
+        .slider-content {
+            max-width: 1000px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .slider-title {
+            font-family: 'Fraunces', serif;
+            font-size: 2rem;
+            color: var(--cream);
+            margin-bottom: 2rem;
+        }
+
+        .slider-images {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .slider-image {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .slider-image.active { opacity: 1; }
+
+        .slider-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .slider-btn {
+            width: 50px;
+            height: 50px;
+            background: none;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: var(--cream);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .slider-btn:hover {
+            background: var(--amber);
+            border-color: var(--amber);
+            color: var(--bark);
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .slider-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .slider-dot.active { background: var(--amber); }
+
         /* Gallery - Horizontal scroll */
         .gallery {
             background: var(--parchment);
@@ -857,32 +988,32 @@
             <h2>Was wir für Sie <span>erschaffen</span></h2>
         </div>
         <div class="services-grid">
-            <div class="service-item">
+            <div class="service-item" data-service="moebel" data-title="Möbel nach Maß">
                 <div class="service-num">01</div>
                 <h3>Möbel nach Maß</h3>
                 <p>Individuelle Stücke, die perfekt in Ihr Leben passen. Vom Entwurf bis zur Montage.</p>
             </div>
-            <div class="service-item">
+            <div class="service-item" data-service="innenausbau" data-title="Innenausbau">
                 <div class="service-num">02</div>
                 <h3>Innenausbau</h3>
                 <p>Komplette Raumkonzepte mit Einbauschränken und Wandverkleidungen.</p>
             </div>
-            <div class="service-item">
+            <div class="service-item" data-service="kuechen" data-title="Küchen">
                 <div class="service-num">03</div>
                 <h3>Küchen</h3>
                 <p>Maßgefertigte Küchen, die Funktion und Ästhetik vereinen.</p>
             </div>
-            <div class="service-item">
+            <div class="service-item" data-service="tueren" data-title="Türen & Fenster">
                 <div class="service-num">04</div>
                 <h3>Türen & Fenster</h3>
                 <p>Handwerkliche Perfektion für Sicherheit und Wärmedämmung.</p>
             </div>
-            <div class="service-item">
+            <div class="service-item" data-service="treppen" data-title="Treppen">
                 <div class="service-num">05</div>
                 <h3>Treppen</h3>
                 <p>Von klassisch bis modern — Treppen die Räume verbinden.</p>
             </div>
-            <div class="service-item">
+            <div class="service-item" data-service="restaurierung" data-title="Restaurierung">
                 <div class="service-num">06</div>
                 <h3>Restaurierung</h3>
                 <p>Antike Schätze verdienen Respekt. Wir bewahren Geschichte.</p>
@@ -965,10 +1096,123 @@
         </div>
     </footer>
 
+    <!-- Slider Modal -->
+    <div class="slider-modal" id="sliderModal">
+        <button class="slider-close" onclick="closeSlider()">×</button>
+        <div class="slider-content">
+            <h3 class="slider-title" id="sliderTitle">Möbel nach Maß</h3>
+            <div class="slider-images" id="sliderImages"></div>
+            <div class="slider-nav">
+                <button class="slider-btn" onclick="prevSlide()">←</button>
+                <button class="slider-btn" onclick="nextSlide()">→</button>
+            </div>
+            <div class="slider-dots" id="sliderDots"></div>
+        </div>
+    </div>
+
     <script>
         const nav = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             nav.classList.toggle('scrolled', window.scrollY > 80);
+        });
+
+        // Service images data
+        const serviceImages = {
+            moebel: [
+                'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1000',
+                'https://images.unsplash.com/photo-1449247709967-d4461a6a6103?w=1000',
+                'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=1000'
+            ],
+            innenausbau: [
+                'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1000',
+                'https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1000',
+                'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1000'
+            ],
+            kuechen: [
+                'https://images.unsplash.com/photo-1556909114-44e3e70034e2?w=1000',
+                'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1000',
+                'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1000'
+            ],
+            tueren: [
+                'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1000',
+                'https://images.unsplash.com/photo-1517991104123-1d56a6e81ed9?w=1000',
+                'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1000'
+            ],
+            treppen: [
+                'https://images.unsplash.com/photo-1562663474-6cbb3eaa4d14?w=1000',
+                'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=1000',
+                'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1000'
+            ],
+            restaurierung: [
+                'https://images.unsplash.com/photo-1588854337115-1c67d9247e4d?w=1000',
+                'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=1000',
+                'https://images.unsplash.com/photo-1597072689227-8882273e8f6a?w=1000'
+            ]
+        };
+
+        let currentSlide = 0;
+        let currentImages = [];
+
+        // Open slider
+        document.querySelectorAll('.service-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const service = item.dataset.service;
+                const title = item.dataset.title;
+                currentImages = serviceImages[service] || [];
+                currentSlide = 0;
+                
+                document.getElementById('sliderTitle').textContent = title;
+                renderSlider();
+                document.getElementById('sliderModal').classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        function renderSlider() {
+            const container = document.getElementById('sliderImages');
+            const dotsContainer = document.getElementById('sliderDots');
+            
+            container.innerHTML = currentImages.map((img, i) => 
+                `<div class="slider-image ${i === currentSlide ? 'active' : ''}">
+                    <img src="${img}" alt="Bild ${i + 1}">
+                </div>`
+            ).join('');
+            
+            dotsContainer.innerHTML = currentImages.map((_, i) => 
+                `<div class="slider-dot ${i === currentSlide ? 'active' : ''}" onclick="goToSlide(${i})"></div>`
+            ).join('');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % currentImages.length;
+            renderSlider();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + currentImages.length) % currentImages.length;
+            renderSlider();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            renderSlider();
+        }
+
+        function closeSlider() {
+            document.getElementById('sliderModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeSlider();
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        // Close on background click
+        document.getElementById('sliderModal').addEventListener('click', (e) => {
+            if (e.target.id === 'sliderModal') closeSlider();
         });
     </script>
 </body>
