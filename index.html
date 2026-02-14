@@ -392,6 +392,101 @@
             margin-top: 0.3rem;
         }
 
+        /* Team Section */
+        .team {
+            background: var(--parchment);
+        }
+
+        .team-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .team-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            display: block;
+            filter: grayscale(20%);
+            transition: filter 0.4s;
+        }
+
+        .team-member:hover .team-photo {
+            filter: grayscale(0%);
+        }
+
+        .team-placeholder {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: var(--walnut);
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Fraunces', serif;
+            font-size: 3rem;
+            color: var(--cream);
+        }
+
+        .team-member h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-bottom: 0.3rem;
+        }
+
+        .team-role {
+            font-size: 0.8rem;
+            color: var(--walnut);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .team-work {
+            position: relative;
+            margin-top: 1rem;
+        }
+
+        .team-work img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .team-work-label {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            right: 1rem;
+            background: rgba(26, 20, 16, 0.9);
+            color: var(--cream);
+            padding: 0.8rem 1rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 900px) {
+            .team-grid { grid-template-columns: 1fr; gap: 4rem; }
+            .team-work img { height: 350px; }
+        }
+
         /* Services - Dark section */
         .services {
             background: var(--timber);
@@ -673,6 +768,7 @@
         <a href="#" class="logo">Stengel Tischlerei</a>
         <ul class="nav-links">
             <li><a href="#philosophie">Philosophie</a></li>
+            <li><a href="#team">Team</a></li>
             <li><a href="#leistungen">Leistungen</a></li>
             <li><a href="#arbeiten">Arbeiten</a></li>
             <li><a href="#kontakt">Kontakt</a></li>
@@ -721,6 +817,34 @@
             </div>
             <div class="about-image">
                 <img src="https://images.unsplash.com/photo-1588854337115-1c67d9247e4d?w=800&q=80" alt="Handwerkskunst">
+            </div>
+        </div>
+    </section>
+
+    <section class="team" id="team">
+        <div class="team-header">
+            <p class="section-label">Unser Team</p>
+            <h2>Die <span>Menschen</span> hinter dem Handwerk</h2>
+        </div>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="team-stengel.jpg" alt="Frank Alexander Stengel" class="team-photo">
+                <h3>Frank Alexander Stengel</h3>
+                <p class="team-role">Inhaber & Tischlermeister</p>
+            </div>
+            <div class="team-member">
+                <div class="team-placeholder">JN</div>
+                <h3>Jona Nispel</h3>
+                <p class="team-role">Tischlergeselle</p>
+                <div class="team-work">
+                    <img src="gesellenstueck-nispel.jpg" alt="Gesellenstück von Jona Nispel">
+                    <div class="team-work-label">Gesellenstück</div>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="team-placeholder">HK</div>
+                <h3>Heinrich Klassen</h3>
+                <p class="team-role">Tischler</p>
             </div>
         </div>
     </section>
